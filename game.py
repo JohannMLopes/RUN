@@ -10,6 +10,7 @@ def game():
     fundo2 = Sprite("Sprites/game/gameplay_background.jpg")
     player = Sprite("Sprites/game/char_run.png", 7)
     teclado = janela.get_keyboard()
+    cont = 0
     
     # Inicia player
     player.x = janela.width/3
@@ -27,16 +28,38 @@ def game():
     fundo2.x = fundo1.width
 
     while True:
-        print("Altura do player: ", player.y + player.height)
+
+        cont += janela.delta_time()
+        print(len(vettruck))
+
+        if cont > 6.0:
+            truck = Sprite("Sprites/game/obstacle_truck.png")
+            truck.x = janela.width + truck.width
+            truck.y = janela.height - truck.height
+            vettruck.append(truck)
+            cont = 0
+
         if teclado.key_pressed("ESC"):
             break
 
+        # Movimento do background
         if fundo1.x + fundo1.width <= 0:
             fundo1.x = fundo2.width
         if fundo2.x + fundo2.width <= 0:
             fundo2.x = fundo1.width
         fundo1.x -= 100* janela.delta_time()
         fundo2.x -= 100* janela.delta_time()
+
+        # Obstaculos se movem
+
+        if len(vettruck) > 0:
+            for i in range(len(vettruck)):
+                if vettruck[i].x < 0 - truck.width:
+                    vettruck.pop(i)
+                    break
+
+            for i in range(len(vettruck)):
+                vettruck[i].x -= 200 * janela.delta_time()
 
         if player.x < 0:
             player.x = 0
@@ -63,4 +86,6 @@ def game():
         fundo2.draw()
         player.update()
         player.draw()
+        for i in range(len(vettruck)):
+            vettruck[i].draw()
         janela.update()
