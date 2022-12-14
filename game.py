@@ -8,14 +8,14 @@ def game():
     janela.set_title("RUN")
     fundo1 = Sprite("Sprites/game/gameplay_background.jpg")
     fundo2 = Sprite("Sprites/game/gameplay_background.jpg")
-    player = Sprite("Sprites/game/char_run.png", 7)
+    player = Sprite("Sprites/game/char_run.png", 6)
     teclado = janela.get_keyboard()
     cont = 0
     
     # Inicia player
     player.x = janela.width/3
     player.y = janela.height - player.height
-    player.set_sequence_time(0, 5, 3, True)
+    player.set_sequence_time(0, 6, 2, True)
 
     jumpvel = 1000
 
@@ -30,7 +30,6 @@ def game():
     while True:
 
         cont += janela.delta_time()
-        print(len(vettruck))
 
         if cont > 6.0:
             truck = Sprite("Sprites/game/obstacle_truck.png")
