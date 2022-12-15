@@ -12,6 +12,7 @@ fundo = GameImage("Sprites/menu/menu_backscreen.jpg")
 play = Sprite("Sprites/menu/play.jpg")
 ranking = Sprite("Sprites/menu/ranking.jpg")
 sair = Sprite("Sprites/menu/sair.jpg")
+rank = open("rank.txt", "a")
 mouse = janela.get_mouse()
 
 play.x = janela.width/2 - play.width/2
