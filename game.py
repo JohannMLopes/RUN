@@ -26,7 +26,7 @@ def game():
     player.y = janela.height - player.height
     player.set_sequence_time(0, 6, 200, True)
 
-    jumpvel = 600
+    jumpvel = 700
 
     dead = False
 
@@ -81,7 +81,7 @@ def game():
         fundo1.x -= 100* janela.delta_time() * dificuldade
         fundo2.x -= 100* janela.delta_time() * dificuldade
 
-        # Colisão player/obstaculo
+        # Colisï¿½o player/obstaculo
 
         if len(vettruck) > 0:
             for i in range(len(vettruck)):
@@ -136,7 +136,7 @@ def game():
         player.move_key_x(400* janela.delta_time())
 
         if player.y > janela.height - player.height:
-            jumpvel = 600
+            jumpvel = 700
             player.y = janela.height - player.height
 
         if player.y < janela.height - player.height:
@@ -144,7 +144,7 @@ def game():
             player.y -= jumpvel * janela.delta_time()
 
         if teclado.key_pressed("space") and (player.y == janela.height - player.height):
-            jumpvel = 600
+            jumpvel = 700
             player.y -= jumpvel * janela.delta_time()
 
 
